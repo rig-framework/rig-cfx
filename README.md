@@ -18,7 +18,7 @@
 
 ## Core Features
 
-...
+- **UI Toolkit:** A complete set of tools including notifications, modals, progress bars, info displays, and a full layout framework to build custom script ui easily.
 
 ## What's Included
 
