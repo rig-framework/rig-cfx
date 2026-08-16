@@ -22,6 +22,8 @@
 - **Player System:** Easily add custom stats, data, and features to players without having to fight the core code.
 - **Groups & Permissions:** A comprehensive role system supporting account or character-scoped groups, role hierarchies, wildcard permissions, and inheritance.
 - **UI Toolkit:** A complete set of tools including notifications, modals, progress bars, info displays, and a full layout framework to build custom script ui easily.
+- **Commands:** ACE permission-based command registration with chat suggestion support.
+- **Callbacks:** A client/server system for triggering a function and getting a response back.
 
 ## What's Included
 
