@@ -1,0 +1,42 @@
+{
+    "welcome": {
+        "user": "Welcome back to the server, %s!"
+    },
+
+    "client": {
+        "player": {
+            "synced_player_data": "Player data synced.",
+            "data_synced": "Synced player data for category '%s': %s",
+            "meta_missing": "Player meta is missing or invalid on load event.",
+            "loaded": "Player '%s' (Source: %d) successfully loaded.",
+            "playing_state_missing": "Playing state value is missing.",
+            "playing_state_changed": "Player playing state changed to: %s"
+        }
+    },
+
+    "server": {
+        "user": {
+            "no_license": "No valid Rockstar license found. Please restart FiveM.",
+            "banned": "You are banned from this server.\nExpires/Type: %s\nReason: %s",
+            "checking": "Checking your identifiers...",
+            "creating": "Creating your account profile...",
+            "checking_bans": "Verifying security records...",
+            "ban_permanent": "Permanently Banned",
+            "ban_no_reason": "No reason provided"
+        },
+        "player": {
+            "extension_failed": "Extension %s failed: %s",
+            "disconnected": "You have disconnected from the server!"
+        },
+        "routing": {
+            "registered": "Registered bucket '%s' (ID: %d)",
+            "setting_updated": "Updated bucket '%s' setting '%s' to %s",
+            "bucket_not_exists": "Bucket '%s' does not exist",
+            "bucket_full": "Player %d cannot join '%s': Bucket is full (%d/%d)",
+            "player_moved": "Moved player %d to bucket '%s' (ID: %d)",
+            "personal_released": "Released personal bucket for source %d",
+            "label_main": "Main World",
+            "label_personal": "Personal Instance"
+        }
+    }
+}
