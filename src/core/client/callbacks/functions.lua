@@ -33,7 +33,7 @@ function m.resolve(id, response)
     local callback = PendingRegistry:get("pending", id)
 
     if not callback then
-        print(("[callbacks] Callback response received but callback not found: %s"):format(id))
+        print("error", locale(core.client.callbacks.callback_missing, id))
         return
     end
 

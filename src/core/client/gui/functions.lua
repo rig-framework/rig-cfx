@@ -23,7 +23,7 @@ local m = {}
 
 function m.notify(opts)
     if not opts then 
-        print("[rig:gui] notify: Options missing.") 
+        print("error", locale(core.client.gui.notify_opts_missing)) 
         return 
     end
 
@@ -37,13 +37,13 @@ end
 
 function m.build_modal(opts)
     if not opts then 
-        print("[rig:gui] build_modal: Modal config missing.") 
+        print("error", locale(core.client.gui.modal_config_missing)) 
         return 
     end
 
     local safe_opts = gui_functions.sanitize(opts, "modal")
     if not safe_opts then 
-        print("[rig:gui] build_modal: Modal config wasn't returned after sanitize.") 
+        print("error", locale(core.client.gui.modal_sanitize_failed)) 
         return 
     end
 
@@ -66,13 +66,13 @@ end
 
 function m.build_ui(ui)
     if not ui then
-        print("[rig:gui] build_ui: ui config missing")
+        print("error", locale(core.client.gui.ui_config_missing))
         return
     end
 
     local safe_ui = gui_functions.sanitize(ui, "ui")
     if not safe_ui then
-        print("[rig:gui] build_ui: ui config wasn't returned after sanitize")
+        print("error", locale(core.client.gui.ui_sanitize_failed))
         return
     end
 
@@ -87,7 +87,7 @@ end
 
 function m.update_slots(items)
     if type(items) ~= "table" then
-        print("[rig:gui] update_slots: invalid items table")
+        print("error", locale(core.client.gui.invalid_slots_table))
         return
     end
 
@@ -97,7 +97,7 @@ end
 
 function m.update_grid(items, section_key)
     if type(items) ~= "table" then
-        print("[rig:gui] update_grid: invalid items table")
+        print("error", locale(core.client.gui.invalid_grid_table))
         return
     end
 

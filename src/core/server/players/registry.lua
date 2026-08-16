@@ -55,7 +55,7 @@ function PlayerRegistry:create(source, char_data)
     for _, ext in ipairs(ext_list) do
         local ok, err = pcall(ext.fn, p)
         if not ok then
-            print("error", locale("server.player.extension_failed", ext.name, err))
+            print("error", locale("core.server.players.extension_failed", ext.name, err))
         end
     end
 

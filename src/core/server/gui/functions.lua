@@ -18,7 +18,10 @@ local m = {}
 --- @section Notify
 
 function m.notify(source, opts)
-    if not source or not opts then print("error", "notify: Invalid params provided.") return end
+    if not source or not opts then 
+        print("error", locale(core.server.gui.notify_invalid_params)) 
+        return 
+    end
 
     TriggerClientEvent("rig:client:notify", source, opts)
 end
@@ -27,7 +30,7 @@ end
 
 function m.build_modal(source, opts)
     if not source or not opts then
-        print("error", "build_modal: Player source or opts missing")
+        print("error", locale(core.server.gui.modal_params_missing))
         return
     end
     TriggerClientEvent("rig:client:build_modal", source, opts)
@@ -35,7 +38,7 @@ end
 
 function m.close_modal(source, container)
     if not source then
-        print("error", "close_modal: Player source missing")
+        print("error", locale(core.server.gui.modal_source_missing))
         return
     end
     TriggerClientEvent("rig:client:close_modal", source, container)
@@ -45,7 +48,7 @@ end
 
 function m.build_ui(source, ui)
     if not source or not ui then
-        print("[rig:gui] build_ui: invalid params provided")
+        print("error", locale(core.server.gui.ui_invalid_params))
         return
     end
 
@@ -54,7 +57,7 @@ end
 
 function m.close_ui(source)
     if not source then
-        print("[rig:gui] close_ui: player source missing")
+        print("error", locale(core.server.gui.ui_source_missing))
         return
     end
 

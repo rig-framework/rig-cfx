@@ -43,11 +43,9 @@ end
 
 --- @section Registration
 
---- Registers a command with ACE permission checks.
---- @param opts table: { name, ace, help, params, handler }
 function m.register(opts)
     if not opts or not opts.name or not opts.handler then
-        print("[commands] Registration failed: missing name or handler")
+        print("error", locale(server.commands.registration_failed))
         return false
     end
 
@@ -60,7 +58,7 @@ function m.register(opts)
             opts.handler(source, args, raw)
         else
             TriggerClientEvent("chat:addMessage", source, {
-                args = { "^1PERMISSION DENIED", "You don't have permission to use this command." }
+                args = { locale(server.commands.permission_denied_title), locale(server.commands.permission_denied_desc) }
             })
         end
     end, false)
@@ -70,7 +68,6 @@ end
 
 --- @section Suggestions
 
---- Returns all registered suggestions formatted for chat:addSuggestions.
 function m.get_formatted_suggestions()
     local formatted = {}
     for name, suggestion in pairs(_CommandRegistry:get_all("suggestions")) do

@@ -80,7 +80,7 @@ function Player:sync(payload)
 end
 
 function Player:dump()
-    print("debug", locale("registry.client.player_data_dump", json.encode(self.data)))
+    print("debug", locale("core.client.players.data_dump", json.encode(self.data)))
 end
 
 return self_instance

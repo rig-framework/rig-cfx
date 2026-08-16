@@ -36,13 +36,13 @@ end
 
 function m.call_registered_function(label, data)
     if not label then
-        print(("[rig:ui] function label is required"))
+        print("error", locale(core.shared.gui.label_required))
         return false
     end
 
     local func = GUIFunctionRegistry:get(context, label)
     if not func then
-        print(("[rig:ui] function with label %s not found"):format(label))
+        print("error", locale(core.shared.gui.function_not_found, label))
         return false
     end
 

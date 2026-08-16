@@ -44,7 +44,7 @@ function RoutingBuckets.new(preset_buckets)
 
     -- @todo MOVE TO CONFIG FILE
     self:register("main", {
-        label = locale("server.routing.label_main"),
+        label = locale("core.server.routing_buckets.label_main"),
         bucket = 0,
         mode = "strict",
         population_enabled = false
@@ -68,7 +68,7 @@ function RoutingBuckets:register(key, config)
     self.buckets[key] = config
     self:_apply_natives(config.bucket, config)
 
-    print("info", locale("server.routing.registered", key, config.bucket))
+    print("info", locale("core.server.routing_buckets.registered", key, config.bucket))
     return config
 end
 
@@ -86,7 +86,7 @@ function RoutingBuckets:set_setting(key, setting, value)
         self:_apply_natives(b.bucket, b)
     end
 
-    print("debug", locale("server.routing.setting_updated", key, setting, tostring(value)))
+    print("debug", locale("core.server.routing_buckets.setting_updated", key, setting, tostring(value)))
     return true
 end
 
@@ -102,7 +102,7 @@ end
 function RoutingBuckets:set_player_bucket(source, target_key)
     local target = self.buckets[target_key]
     if not target then
-        print("error", locale("server.routing.bucket_not_exists", tostring(target_key)))
+        print("error", locale("core.server.routing_buckets.bucket_not_exists", tostring(target_key)))
         return false
     end
 
@@ -110,7 +110,7 @@ function RoutingBuckets:set_player_bucket(source, target_key)
         local current_count = 0
         for _ in pairs(target.players) do current_count = current_count + 1 end
         if current_count >= target.player_cap then
-            print("warn", locale("server.routing.bucket_full", source, target_key, current_count, target.player_cap))
+            print("warn", locale("core.server.routing_buckets.bucket_full", source, target_key, current_count, target.player_cap))
             return false
         end
     end
@@ -124,7 +124,7 @@ function RoutingBuckets:set_player_bucket(source, target_key)
     target.players[source] = true
 
     SetPlayerRoutingBucket(source, target.bucket)
-    print("info", locale("server.routing.player_moved", source, target_key, target.bucket))
+    print("info", locale("core.server.routing_buckets.player_moved", source, target_key, target.bucket))
     return true
 end
 
@@ -141,7 +141,7 @@ function RoutingBuckets:assign_personal(source, custom_config)
     self.auto_id = self.auto_id + 1
 
     local config = custom_config or {
-        label = locale("server.routing.label_personal"),
+        label = locale("core.server.routing_buckets.label_personal"),
         bucket = bucket_id,
         mode = "strict",
         population_enabled = false
@@ -161,7 +161,7 @@ function RoutingBuckets:release_personal(source, fallback_key)
 
     if self.buckets[personal_key] then
         self.buckets[personal_key] = nil
-        print("debug", locale("server.routing.personal_released", source))
+        print("debug", locale("core.server.routing_buckets.personal_released", source))
     end
 end
 

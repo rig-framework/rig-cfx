@@ -44,7 +44,7 @@ function Player.new(source, user, char_data)
         replicated = {},
         extensions = {},
         methods = {},
-        listeners = {}   -- <-- added
+        listeners = {}
     }
     return self
 end

@@ -22,7 +22,7 @@ local utils = require("src.core.server.utils")
 
 RegisterServerEvent("rig:server:disconnect", function()
     local _src = source
-    local msg = locale and locale("server.player.disconnected") or "Disconnected."
+    local msg = locale and locale("core.server.players.disconnected") or "Disconnected."
     DropPlayer(_src, msg)
 end)
 

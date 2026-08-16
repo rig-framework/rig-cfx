@@ -16,7 +16,7 @@ local player = require("src.core.client.players.class")
 --- @section Class Event Listeners
 
 player:on("data_synced", function(self, category, data)
-    print("debug", locale("client.player.data_synced", category, json.encode(data)))
+    print("debug", locale("core.client.players.data_synced", category, json.encode(data)))
 end)
 
 --- @section Network Events
@@ -24,22 +24,22 @@ end)
 RegisterNetEvent("rig:client:player_loaded")
 AddEventHandler("rig:client:player_loaded", function(meta)
     if type(meta) ~= "table" or not meta.source then 
-        print("error", locale("client.player.meta_missing")) 
+        print("error", locale("core.client.players.meta_missing")) 
         return 
     end
     
-    print("info", locale("client.player.loaded", meta.username, meta.source))
+    print("info", locale("core.client.players.loaded", meta.username, meta.source))
 end)
 
 RegisterNetEvent("rig:client:playing_state_changed")
 AddEventHandler("rig:client:playing_state_changed", function(state)
     if state == nil then 
-        print("error", locale("client.player.playing_state_missing")) 
+        print("error", locale("core.client.players.playing_state_missing")) 
         return 
     end
     
     player:set_playing(state)
-    print("info", locale("client.player.playing_state_changed", player:is_playing() and "playing" or "not playing"))
+    print("info", locale("core.client.players.playing_state_changed", player:is_playing() and "playing" or "not playing"))
 end)
 
 RegisterNetEvent("rig:client:sync_player_data")

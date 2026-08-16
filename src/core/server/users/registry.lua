@@ -58,7 +58,7 @@ end
 function UserRegistry:request_connection(source, name, deferrals)
     local ids = utils.get_identifiers(source)
     if not ids.license then
-        return deferrals.done(locale("server.user.no_license"))
+        return deferrals.done(locale("core.server.users.no_license"))
     end
 
     deferrals.handover({
@@ -67,20 +67,20 @@ function UserRegistry:request_connection(source, name, deferrals)
     })
     
     deferrals.defer()
-    update_deferral(deferrals, "server.user.checking")
+    update_deferral(deferrals, "core.server.users.checking")
 
     local result = self:exists(ids.license)
     local user_data = result and result[1]
 
     if not user_data then
-        update_deferral(deferrals, "server.user.creating")
+        update_deferral(deferrals, "core.server.users.creating")
         local uid = utils.generate_unique_id(UNIQUE_ID_CHARS, "users", "unique_id", nil)
         local username = USERNAME_PREFIX .. "_" .. uid
         self:persist(username, name, uid, ids.license, ids.discord, GetPlayerTokens(source), ids.ip)
         user_data = { username = username, name = name, unique_id = uid, license = ids.license, discord = ids.discord, ip = ids.ip, banned = false }
     end
 
-    update_deferral(deferrals, "server.user.checking_bans")
+    update_deferral(deferrals, "core.server.users.checking_bans")
     local ban_query = "SELECT id, reason, expires_at FROM user_bans WHERE unique_id = ? AND expired = 0 ORDER BY created DESC LIMIT 1"
     local ban = exports.oxmysql:query_async(ban_query, { user_data.unique_id })
     local active_ban = ban and ban[1]
@@ -90,9 +90,9 @@ function UserRegistry:request_connection(source, name, deferrals)
             exports.oxmysql:query_async("UPDATE user_bans SET expired = 1 WHERE id = ?", { active_ban.id })
             exports.oxmysql:query_async("UPDATE users SET banned = 0 WHERE unique_id = ?", { user_data.unique_id })
         else
-            local time_str = active_ban.expires_at and os.date("%Y-%m-%d %H:%M:%S", active_ban.expires_at / 1000) or locale("server.user.ban_permanent")
-            local reason = active_ban.reason or locale("server.user.ban_no_reason")
-            return deferrals.done(locale("server.user.banned", time_str, reason))
+            local time_str = active_ban.expires_at and os.date("%Y-%m-%d %H:%M:%S", active_ban.expires_at / 1000) or locale("core.server.users.ban_permanent")
+            local reason = active_ban.reason or locale("core.server.users.ban_no_reason")
+            return deferrals.done(locale("core.server.users.banned", time_str, reason))
         end
     end
 

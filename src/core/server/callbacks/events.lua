@@ -23,7 +23,7 @@ AddEventHandler("rig:server:trigger_callback", function(name, data, cb_id)
     local callback = callbacks.get(name)
 
     if not callback then
-        print(("[callbacks] Callback not found: %s"):format(name))
+        print("error", locale(core.server.callbacks.callback_not_found, name))
         TriggerClientEvent("rig:client:callback_response", src, cb_id, nil)
         return
     end

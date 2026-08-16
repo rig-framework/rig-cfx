@@ -24,13 +24,16 @@ end)
 --- @section Notify
 
 RegisterNetEvent("rig:client:notify", function(opts)
+    if not opts then return print("error", locale(core.client.gui.notify_opts_missing)) end
+    
     gui.notify(opts)
 end)
 
 --- @section Modal
 
 RegisterNetEvent("rig:client:build_modal", function(opts)
-    if not opts then return print("error", "build_modal: opts missing") end
+    if not opts then return print("error", locale(core.client.gui.modal_opts_missing)) end
+
     gui.build_modal(opts)
 end)
 
@@ -41,8 +44,10 @@ end)
 
 --- @section UI Framework
 
-RegisterNetEvent("rig:client:build_ui", function()
-    gui.build_ui(ui)
+RegisterNetEvent("rig:client:build_ui", function(opts)
+    if not opts then return print("error", locale(core.client.gui.ui_opts_missing)) end
+    
+    gui.build_ui(opts)
 end)
 
 RegisterNetEvent("rig:client:close_ui", function()
