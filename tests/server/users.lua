@@ -17,8 +17,8 @@
 --- @section Imports
 --- Require the classes/modules you need into the file using the global `require()` function.
 
-local UserRegistry = require("src.server.users.registry")
-local utils = require("src.server.utils")
+local UserRegistry = require("src.core.server.users.registry")
+local utils = require("src.core.server.utils")
 
 --- @section Helpers
 --- Just a helper function to send chat messages this is not important.

@@ -13,10 +13,10 @@ License: https://github.com/rig-framework/rig-cfx/blob/main/LICENSE
 
 --- @section Imports
 
-local Registry = require("src.shared.classes.registry")
-local RoutingBuckets = require("src.server.classes.routing_buckets")
-local Player = require("src.server.players.class")
-local UserRegistry = require("src.server.users.registry")
+local Registry = require("src.core.shared.classes.registry")
+local RoutingBuckets = require("src.core.server.classes.routing_buckets")
+local Player = require("src.core.server.players.class")
+local UserRegistry = require("src.core.server.users.registry")
 
 --- @section Initialisation
 

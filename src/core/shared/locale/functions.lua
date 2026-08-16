@@ -13,7 +13,7 @@ License: https://github.com/rig-framework/rig-cfx/blob/main/LICENSE
 
 --- @section Imports
 
-local Locale = require("src.shared.locale.class")
+local Locale = require("src.core.shared.locale.class")
 
 --- @section Initialization
 

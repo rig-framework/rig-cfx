@@ -12,8 +12,20 @@ License: https://github.com/rig-framework/rig-cfx/blob/main/LICENSE
 --- @file extensions/server/groups/class.lua
 --- @description Groups extension built for RIG.
 
+--- @section Guard
+
+assert(rig and rig.settings, "rig.settings not initialised - check load order")
+
+if not rig.settings.extensions or not rig.settings.extensions.groups then 
+    return nil 
+end
+
+--- @section Initialisation
+
 local Group = {}
 Group.__index = Group
+
+--- @section Factory
 
 function Group.new(data)
     local self = setmetatable({
@@ -29,7 +41,7 @@ function Group.new(data)
     return self
 end
 
---- @section Roles
+--- @section Roles Methods
 
 function Group:add_role(role_data)
     self.roles[role_data.name] = {
@@ -44,7 +56,7 @@ function Group:get_role(role_name)
     return self.roles[role_name]
 end
 
---- @section Permissions
+--- @section Permission Methods
 
 function Group:has_permission(role_name, permission)
     local role = self.roles[role_name]
@@ -59,7 +71,7 @@ function Group:has_permission(role_name, permission)
     return false
 end
 
---- @section Rank comparison
+--- @section Rank Methods
 
 function Group:role_outranks(role_name_a, role_name_b)
     local a = self.roles[role_name_a]

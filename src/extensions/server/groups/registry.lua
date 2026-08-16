@@ -8,16 +8,44 @@ License: https://github.com/rig-framework/rig-cfx/blob/main/LICENSE
 ----------------------------------------
 ]]
 
---- @file src/server/groups/init.lua
+--- @class GroupRegistry
+--- @file src/extensions/server/groups/registry.lua
 --- @description Loads and manages groups, roles, and members for RIG.
 
-local Registry = require("src.shared.classes.registry")
-local Group = require("extensions.server.groups.class")
+--- @section Guard
+
+assert(rig and rig.settings, "rig.settings not initialised - check load order")
+
+if not rig.settings.extensions or not rig.settings.extensions.groups then 
+    return nil 
+end
+
+--- @section Imports
+
+local Registry = require("src.core.shared.classes.registry")
+local Group = require("src.extensions.server.groups.class")
+
+--- @section Initialisation
 
 local GroupRegistry = {}
 local _GroupRegistry = Registry.new()
 
---- @section Loading
+--- @section Internal Functions
+
+local function check_group_permission(group, role_name, permission)
+    if group:has_permission(role_name, permission) then return true end
+
+    if group.metadata.inherit_permissions and group.parent_name then
+        local parent = GroupRegistry:get_group(group.parent_name)
+        if parent and parent.roles[role_name] then
+            return check_group_permission(parent, role_name, permission)
+        end
+    end
+
+    return false
+end
+
+--- @section Lifecycle Methods
 
 function GroupRegistry:load_all()
     _GroupRegistry:clear("groups")
@@ -39,13 +67,11 @@ function GroupRegistry:load_all()
     end
 end
 
---- @section Groups
+--- @section Getter Methods
 
 function GroupRegistry:get_group(name)
     return _GroupRegistry:get("groups", name)
 end
-
---- @section Members
 
 function GroupRegistry:get_member_groups(unique_id, char_id)
     char_id = char_id or 0
@@ -59,6 +85,8 @@ function GroupRegistry:get_member(unique_id, group_name, char_id)
     local result = exports.oxmysql:query_async(query, { unique_id, group_name, char_id })
     return result and result[1]
 end
+
+--- @section Member Methods
 
 function GroupRegistry:add_member(unique_id, group_name, role_name, char_id, opts)
     opts = opts or {}
@@ -97,19 +125,6 @@ function GroupRegistry:remove_member(unique_id, group_name, char_id)
 end
 
 --- @section Permissions
-
-local function check_group_permission(group, role_name, permission)
-    if group:has_permission(role_name, permission) then return true end
-
-    if group.metadata.inherit_permissions and group.parent_name then
-        local parent = GroupRegistry:get_group(group.parent_name)
-        if parent and parent.roles[role_name] then
-            return check_group_permission(parent, role_name, permission)
-        end
-    end
-
-    return false
-end
 
 function GroupRegistry:has_permission(unique_id, permission, char_id)
     local members = self:get_member_groups(unique_id, char_id)

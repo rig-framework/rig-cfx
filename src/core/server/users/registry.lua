@@ -22,10 +22,10 @@ local USERNAME_PREFIX = rig.settings.username_prefix
 
 --- @section Imports
 
-local Registry = require("src.shared.classes.registry")
-local User = require("src.server.users.class")
+local Registry = require("src.core.shared.classes.registry")
+local User = require("src.core.server.users.class")
 
-local utils = require("src.server.utils")
+local utils = require("src.core.server.utils")
 
 --- @section Initialisation
 

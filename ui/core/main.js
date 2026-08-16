@@ -20,7 +20,7 @@ import { UIBuilder } from "./framework/js/main.js";
 // Initialisation
 
 const NOTIFY = new Notify({
-    position: "top-center",
+    position: "right-center",
     fill_direction: "up"
 });
 
@@ -37,6 +37,19 @@ HANDLERS.notify = (data) => {
     NOTIFY.show(data.payload);
 };
 
+HANDLERS.build_modal = (data) => {
+    if (!data || !data.payload) {
+        console.warn("[Modal] Missing payload.");
+        return;
+    }
+
+    Modal.show({
+        title: data.payload.title,
+        options: data.payload.options || [],
+        buttons: data.payload.buttons || []
+    });
+};
+
 HANDLERS.build_ui = (data) => {
     if (!data.payload) {
         console.warn("[UI Builder] No UI data provided");
@@ -51,3 +64,19 @@ HANDLERS.build_ui = (data) => {
     const builder = new UIBuilder(data.payload);
     window.ui_instance = builder;
 };
+
+/**
+ * Global message listener for all NUI messages.
+ * Routes each message to its corresponding handler.
+ */
+window.addEventListener("message", (event) => {
+    const { func } = event.data;
+    const handler = HANDLERS[func];
+
+    if (typeof handler !== "function") {
+        console.warn(`Handler missing: ${func}`);
+        return;
+    }
+
+    handler(event.data);
+});

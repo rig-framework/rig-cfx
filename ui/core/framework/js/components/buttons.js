@@ -9,6 +9,7 @@ License: https://github.com/rig-framework/rig-cfx/blob/main/LICENSE
 */
 
 import { Modal } from "../../../modal/js/modal.js"
+import { send_nui_callback } from "../helpers.js";
 
 export class Buttons {
     constructor({ buttons = [], classes = "", global = true }) {

@@ -11,7 +11,7 @@ License: https://github.com/rig-framework/rig-cfx/blob/main/LICENSE
 --- @file src/client/events.lua
 --- @description Client side player events.
 
-local player = require("src.client.players.class")
+local player = require("src.core.client.players.class")
 
 --- @section Class Event Listeners
 
@@ -29,7 +29,6 @@ AddEventHandler("rig:client:player_loaded", function(meta)
     end
     
     print("info", locale("client.player.loaded", meta.username, meta.source))
-    TriggerServerEvent("rig:server:get_command_suggestions")
 end)
 
 RegisterNetEvent("rig:client:playing_state_changed")

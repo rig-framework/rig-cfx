@@ -13,10 +13,10 @@ License: https://github.com/rig-framework/rig-cfx/blob/main/LICENSE
 
 --- @section Imports
 
-local UserRegistry = require("src.server.users.registry")
-local PlayerRegistry = require("src.server.players.registry")
+local UserRegistry = require("src.core.server.users.registry")
+local PlayerRegistry = require("src.core.server.players.registry")
 
-local utils = require("src.server.utils")
+local utils = require("src.core.server.utils")
 
 --- @section Events
 

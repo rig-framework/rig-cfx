@@ -25,33 +25,44 @@ files {
 }
 
 shared_scripts {
-    "src/shared/print.lua",
-    "src/shared/require.lua",
+    "src/core/shared/print.lua",
+    "src/core/shared/require.lua",
 
-    "src/shared/classes/*.lua",
-    "src/shared/**/class.lua",
+    "src/core/shared/classes/*.lua",
+    "src/core/shared/**/class.lua",
 
-    "src/shared/**/functions.lua",
+    "src/core/shared/**/registry.lua",
+    "src/core/shared/**/functions.lua",
 
     "init.lua"
 }
 
 client_scripts {
-    "src/client/**/class.lua",
-    "src/client/**/events.lua",
+    "src/core/client/gui/*.lua",
+
+    "src/core/client/**/class.lua",
+    "src/core/client/**/registry.lua",
+    "src/core/client/**/functions.lua",
+    "src/core/client/**/events.lua",
+
+    "src/core/client/gameplay.lua",
+
+    "tests/client/*.lua"
 }
 
 server_scripts {
-    "src/server/classes/*.lua",
+    "src/core/server/gui/*.lua",
 
-    "src/server/**/class.lua",
-    "src/server/**/registry.lua",
-    "src/server/**/events.lua",
+    "src/core/server/classes/*.lua",
 
-    "src/server/utils.lua",
+    "src/core/server/**/class.lua",
+    "src/core/server/**/registry.lua",
+    "src/core/server/**/events.lua",
 
-    "extensions/server/**/class.lua",
-    "extensions/server/**/registry.lua",
+    "src/core/server/utils.lua",
+
+    "src/extensions/server/**/class.lua",
+    "src/extensions/server/**/registry.lua",
 
     "tests/server/*.lua"
 }

@@ -14,6 +14,7 @@ License: https://github.com/rig-framework/rig-cfx/blob/main/LICENSE
 
 --- @section Constants
 
+local PRINT = print
 local RES_NAME = GetCurrentResourceName()
 local SERVER = IsDuplicityVersion()
 local CLIENT = not SERVER
@@ -26,21 +27,46 @@ rig = setmetatable({
     name = RES_NAME,
     client = not SERVER,
     server = SERVER,
-    settings = {
-        language = GetConvar("rig:language", "en"),
-        debug = GetConvarBool("rig:debug", false),
-        small_console_splash = GetConvarBool("rig:small_console_splash", false),
-
-        connection_messages = GetConvarBool("rig:connection_messages", true),
-        unique_id_chars = GetConvarInt("rig:unique_id_chars", 6),
-        username_prefix = GetConvar("rig:username_prefix", "player"),
-    },
     metadata = {
         name = GetResourceMetadata(RES_NAME, "name", 0) or RES_NAME,
         desc = GetResourceMetadata(RES_NAME, "description", 0) or "N/A",
         version = GetResourceMetadata(RES_NAME, "version", 0) or "1.0.0",
         author = GetResourceMetadata(RES_NAME, "author", 0) or "Unknown"
-    }
+    },
+    settings = {
+        general = {
+            language = GetConvar("rig:language", "en"),
+            debug = GetConvarBool("rig:debug", false),
+            small_console_splash = GetConvarBool("rig:small_console_splash", false),
+            connection_messages = GetConvarBool("rig:connection_messages", true),
+        },
+
+        users = {
+            unique_id_chars = GetConvarInt("rig:users:unique_id_chars", 6),
+            username_prefix = GetConvar("rig:users:username_prefix", "player"),
+        },
+
+        gameplay = {
+            disable_dispatch = GetConvarBool("rig:gameplay:disable_dispatch", true),
+            disable_police_scanner = GetConvarBool("rig:gameplay:disable_police_scanner", true),
+            disable_garbage_trucks = GetConvarBool("rig:gameplay:disable_garbage_trucks", true),
+            disable_random_cops = GetConvarBool("rig:gameplay:disable_random_cops", true),
+            disable_wanted = GetConvarBool("rig:gameplay:disable_wanted", true),
+            disable_weapon_autoreload = GetConvarBool("rig:gameplay:disable_weapon_autoreload", true),
+            disable_weapon_autoswap = GetConvarBool("rig:gameplay:disable_weapon_autoswap", true),
+            hide_ammo = GetConvarBool("rig:gameplay:hide_ammo", true),
+            invalidate_idle_cam = GetConvarBool("rig:gameplay:invalidate_idle_cam", true),
+            artificial_lights = GetConvarBool("rig:gameplay:artificial_lights", true),
+            hide_hud_components = GetConvarBool("rig:gameplay:hide_hud_components", true),
+            hud_components = GetConvar("rig:gameplay:hud_components", "1,2,3,4,5,6,7,8,9,13,19,20,21,22"),
+            disable_controls = GetConvarBool("rig:gameplay:disable_controls", true),
+            disable_controls_list = GetConvar("rig:gameplay:disable_controls_list", "37,157,158,160,161,256,257"),
+        },
+
+        extensions = {
+            groups = GetConvarBool("rig:extensions:groups", true),
+        },
+    },
 }, {
     __tostring = function(t)
         local ver = t.metadata and t.metadata.version or "1.0.0"

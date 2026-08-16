@@ -21,9 +21,9 @@
 --- @section Imports
 --- Require the classes/modules you need into the file using the global `require()` function.
 
-local PlayerRegistry = require("src.server.players.registry")
-local TestExtension = require("tests.extensions.server.player_ext")
-local TestReactorExtension = require("tests.extensions.server.player_reactor_ext")
+local PlayerRegistry = require("src.core.server.players.registry")
+local TestExtension = require("tests.server.player_ext")
+local TestReactorExtension = require("tests.server.player_reactor_ext")
 
 --- @section Helpers
 --- Just a helper function to send chat messages this is not important. 

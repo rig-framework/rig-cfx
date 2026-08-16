@@ -1,6 +1,5 @@
 --- @class TestReactorExtension
---- @description Never references TestExtension directly - proves decoupling via the event bus.
---- Subscribes to "test_stat_depleted" and reacts by flagging the player and emitting its own event.
+--- @description Never references TestExtension directly - shows decoupling via the event bus.
 
 local TestReactorExtension = {}
 
