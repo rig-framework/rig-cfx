@@ -50,6 +50,11 @@ HANDLERS.build_modal = (data) => {
     });
 };
 
+HANDLERS.remove_modal = (data) => {
+    const container = data && data.payload && data.payload.container ? data.payload.container : "#ui_focus";
+    Modal.remove(container);
+};
+
 HANDLERS.build_ui = (data) => {
     if (!data.payload) {
         console.warn("[UI Builder] No UI data provided");

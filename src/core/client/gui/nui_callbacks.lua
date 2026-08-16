@@ -42,6 +42,6 @@ RegisterNUICallback("gui:handler", function(data, cb)
     if data.should_close then
         SetNuiFocus(false, false)
     end
-
+    
     if cb then cb(true) end
 end)

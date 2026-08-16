@@ -115,7 +115,9 @@ $(document).off("click", ".btn").on("click", ".btn", function () {
             if (source) dataset.source = source;
         });
 
-        $("#ui_focus").removeClass("active").empty();
+        if (should_close) {
+            $("#ui_focus").removeClass("active").empty();
+        }
     }
 
     send_nui_callback(action, dataset, { should_close }).then(() => {

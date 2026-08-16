@@ -30,4 +30,8 @@ AddEventHandler("rig:server:gui_handler", function(data)
     if not success then
         print(("[rig:gui] server handler: function call failed for %s (source %s) - %s"):format(data.action, src, result))
     end
+
+    if data.should_close then
+        TriggerClientEvent("rig:client:remove_focus", source)
+    end
 end)

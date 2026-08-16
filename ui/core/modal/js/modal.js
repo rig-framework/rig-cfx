@@ -82,6 +82,9 @@ export class Modal {
     }
 
     append_to(container = "#ui_focus") {
+        // Force cleanup any existing modal elements or stray listeners before rendering a new one
+        Modal.remove(container);
+
         $(container).html(this.get_html()).addClass("active");
 
         $(".modal_select").off("click").on("click", function () {
@@ -105,11 +108,21 @@ export class Modal {
             $(`.slider_value[data-for="${id}"]`).text($(this).val());
         });
 
-        $(document).on("click", e => {
+        $(document).on("click.modal", e => {
             if (!$(e.target).closest(".modal_select_wrapper").length) {
                 $(".modal_select_options").hide();
             }
         });
+    }
+
+    remove(container = "#ui_focus") {
+        Modal.remove(container);
+    }
+
+    static remove(container = "#ui_focus") {
+        $(container).removeClass("active");
+        $("#modal_container").remove();
+        $(document).off("click.modal");
     }
 
     static show({ title = "Input Required", options = [], buttons = [] }) {

@@ -38,12 +38,11 @@ shared_scripts {
 }
 
 client_scripts {
-    "src/core/client/gui/*.lua",
-
     "src/core/client/**/class.lua",
     "src/core/client/**/registry.lua",
     "src/core/client/**/functions.lua",
     "src/core/client/**/events.lua",
+    "src/core/client/**/nui_callbacks.lua",
 
     "src/core/client/gameplay.lua",
 
@@ -51,8 +50,6 @@ client_scripts {
 }
 
 server_scripts {
-    "src/core/server/gui/*.lua",
-
     "src/core/server/classes/*.lua",
 
     "src/core/server/**/class.lua",

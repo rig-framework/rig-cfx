@@ -25,6 +25,7 @@ RegisterCommand("test_server_modal", function(source, args, raw)
                         data and data.dataset and data.dataset.item_name,
                         data and data.dataset and data.dataset.amount
                     ))
+                    TriggerClientEvent("rig:client:close_modal", source)
                 end,
                 dataset = {
                     source = "inventory",
