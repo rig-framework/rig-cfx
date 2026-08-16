@@ -18,6 +18,9 @@
 
 ## Core Features
 
+- **User Accounts:** A user setup for reliable player tracking, unique identification, with ban and warning management.
+- **Player System:** Easily add custom stats, data, and features to players without having to fight the core code.
+- **Groups & Permissions:** A comprehensive role system supporting account or character-scoped groups, role hierarchies, wildcard permissions, and inheritance.
 - **UI Toolkit:** A complete set of tools including notifications, modals, progress bars, info displays, and a full layout framework to build custom script ui easily.
 
 ## What's Included
