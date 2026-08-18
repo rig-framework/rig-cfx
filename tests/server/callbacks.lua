@@ -1,4 +1,4 @@
-local callbacks = require("src.core.server.callbacks.functions")
+local callbacks = require("src.server.callbacks.functions")
 
 callbacks.register("test_ping", function(source, data, cb)
     print(("[Callback Test] test_ping received from %s - data: %s"):format(source, tostring(data and data.msg)))

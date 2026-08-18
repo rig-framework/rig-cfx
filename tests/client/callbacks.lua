@@ -1,4 +1,4 @@
-local callbacks = require("src.core.client.callbacks.functions")
+local callbacks = require("src.client.callbacks.functions")
 
 RegisterCommand("test_callback", function(source, args, raw)
     print("[Callback Test] triggering test_ping...")

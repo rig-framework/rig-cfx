@@ -21,7 +21,7 @@
 --- @section Imports
 --- Require the classes/modules you need into the file using the global `require()` function.
 
-local PlayerRegistry = require("src.core.server.players.registry")
+local PlayerRegistry = require("src.server.players.registry")
 local TestExtension = require("tests.server.player_ext")
 local TestReactorExtension = require("tests.server.player_reactor_ext")
 

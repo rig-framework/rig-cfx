@@ -17,7 +17,7 @@ license "Apache 2.0"
 author "Case"
 lua54 "yes"
 
-ui_page "ui/core/index.html"
+ui_page "ui/index.html"
 
 files {
     "locales/*.json",
@@ -25,41 +25,38 @@ files {
 }
 
 shared_scripts {
-    "src/core/shared/print.lua",
-    "src/core/shared/require.lua",
+    "init.lua",
 
-    "src/core/shared/classes/*.lua",
-    "src/core/shared/**/class.lua",
+    "src/shared/print.lua",
+    "src/shared/require.lua",
 
-    "src/core/shared/**/registry.lua",
-    "src/core/shared/**/functions.lua",
+    "src/shared/classes/*.lua",
+    "src/shared/**/class.lua",
 
-    "init.lua"
+    "src/shared/**/registry.lua",
+    "src/shared/**/functions.lua",
 }
 
 client_scripts {
-    "src/core/client/**/class.lua",
-    "src/core/client/**/registry.lua",
-    "src/core/client/**/functions.lua",
-    "src/core/client/**/events.lua",
-    "src/core/client/**/nui_callbacks.lua",
+    "src/client/**/class.lua",
+    "src/client/**/registry.lua",
+    "src/client/**/functions.lua",
+    "src/client/**/events.lua",
+    "src/client/**/nui_callbacks.lua",
+    "src/client/**/exports.lua",
 
-    "src/core/client/gameplay.lua",
+    "src/client/gameplay.lua",
 
     "tests/client/*.lua"
 }
 
 server_scripts {
-    "src/core/server/classes/*.lua",
+    "src/server/**/class.lua",
+    "src/server/**/registry.lua",
+    "src/server/**/events.lua",
+    "src/server/**/exports.lua",
 
-    "src/core/server/**/class.lua",
-    "src/core/server/**/registry.lua",
-    "src/core/server/**/events.lua",
-
-    "src/core/server/utils.lua",
-
-    "src/extensions/server/**/class.lua",
-    "src/extensions/server/**/registry.lua",
+    "src/server/utils.lua",
 
     "tests/server/*.lua"
 }

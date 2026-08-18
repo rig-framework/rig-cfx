@@ -1,5 +1,5 @@
-local GroupRegistry = require("src.extensions.server.groups.registry")
-local UserRegistry = require("src.core.server.users.registry")
+local GroupRegistry = require("src.server.groups.registry")
+local UserRegistry = require("src.server.users.registry")
 
 local function notify(source, msg)
     if source == 0 then

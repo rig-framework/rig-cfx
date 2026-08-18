@@ -1,4 +1,4 @@
-local gui_functions = require("src.core.shared.gui.functions")
+local gui_functions = require("src.shared.gui.functions")
 
 RegisterCommand("test_server_notify", function(source, args, raw)
     TriggerClientEvent("rig:client:notify", source, {

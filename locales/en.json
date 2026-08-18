@@ -3,93 +3,86 @@
         "user": "Welcome back to the server, %s!"
     },
 
-    "core": {
-        "client": {
-            "callbacks": {
-                "callback_missing": "Callback response received but callback not found: %s"
-            },
-            "gui": {
-                "notify_opts_missing": "Notify options missing.",
-                "modal_opts_missing": "Modal options missing.",
-                "ui_opts_missing": "UI Framework options missing.",
-                "modal_config_missing": "Modal config missing.",
-                "modal_sanitize_failed": "Modal config wasn't returned after sanitize.",
-                "ui_config_missing": "UI config missing.",
-                "ui_sanitize_failed": "UI config wasn't returned after sanitize.",
-                "invalid_slots_table": "Invalid items table for slots update.",
-                "invalid_grid_table": "Invalid items table for grid update.",
-                "focus_cleared": "Focus cleared.",
-                "handler_invoked": "Handler invoked with: %s",
-                "handler_failed": "Handler: function call failed - %s"
-            },
-            "players": {
-                "data_dump": "Client player data: %s",
-                "synced_player_data": "Player data synced.",
-                "data_synced": "Synced player data for category '%s': %s",
-                "meta_missing": "Player meta is missing or invalid on load event.",
-                "loaded": "Player '%s' (Source: %d) successfully loaded.",
-                "playing_state_missing": "Playing state value is missing.",
-                "playing_state_changed": "Player playing state changed to: %s"
-            }
+    "client": {
+        "callbacks": {
+            "callback_missing": "Callback response received but callback not found: %s"
         },
-        "server": {
-            "callbacks": {
-                "callback_not_found": "Callback not found: %s",
-                "register_failed": "Failed to register callback: %s",
-                "callback_overwrite": "Overwriting existing callback: %s"
-            },
-            "routing_buckets": {
-                "registered": "Registered bucket '%s' (ID: %d)",
-                "setting_updated": "Updated bucket '%s' setting '%s' to %s",
-                "bucket_not_exists": "Bucket '%s' does not exist",
-                "bucket_full": "Player %d cannot join '%s': Bucket is full (%d/%d)",
-                "player_moved": "Moved player %d to bucket '%s' (ID: %d)",
-                "personal_released": "Released personal bucket for source %d",
-                "label_main": "Main World",
-                "label_personal": "Personal Instance"
-            },
-            "commands": {
-                "registration_failed": "Registration failed: missing name or handler",
-                "permission_denied_title": "^1PERMISSION DENIED",
-                "permission_denied_desc": "You don't have permission to use this command."
-            },
-            "gui": {
-                "missing_action": "Server handler: missing action (source %d)",
-                "function_call_failed": "Server handler: function call failed for %s (source %d) - %s",
-                "notify_invalid_params": "Notify: Invalid params provided.",
-                "modal_params_missing": "Build modal: Player source or opts missing.",
-                "modal_source_missing": "Close modal: Player source missing.",
-                "ui_invalid_params": "Build UI: Invalid params provided.",
-                "ui_source_missing": "Close UI: Player source missing."
-            },
-            "players": {
-                "extension_failed": "Extension %s failed: %s",
-                "disconnected": "You have disconnected from the server!"
-            },
-            "users": {
-                "no_license": "No valid Rockstar license found. Please restart FiveM.",
-                "banned": "You are banned from this server.\nExpires/Type: %s\nReason: %s",
-                "checking": "Checking your identifiers...",
-                "creating": "Creating your account profile...",
-                "checking_bans": "Verifying security records...",
-                "ban_permanent": "Permanently Banned",
-                "ban_no_reason": "No reason provided"
-            }
+        "gui": {
+            "notify_opts_missing": "Notify options missing.",
+            "modal_opts_missing": "Modal options missing.",
+            "ui_opts_missing": "UI Framework options missing.",
+            "modal_config_missing": "Modal config missing.",
+            "modal_sanitize_failed": "Modal config wasn't returned after sanitize.",
+            "ui_config_missing": "UI config missing.",
+            "ui_sanitize_failed": "UI config wasn't returned after sanitize.",
+            "invalid_slots_table": "Invalid items table for slots update.",
+            "invalid_grid_table": "Invalid items table for grid update.",
+            "focus_cleared": "Focus cleared.",
+            "handler_invoked": "Handler invoked with: %s",
+            "handler_failed": "Handler: function call failed - %s"
         },
-        "shared": {
-            "gui": {
-                "label_required": "Function label is required.",
-                "function_not_found": "Function with label %s not found."
-            }
+        "players": {
+            "data_dump": "Client player data: %s",
+            "synced_player_data": "Player data synced.",
+            "data_synced": "Synced player data for category '%s': %s",
+            "meta_missing": "Player meta is missing or invalid on load event.",
+            "loaded": "Player '%s' (Source: %d) successfully loaded.",
+            "playing_state_missing": "Playing state value is missing.",
+            "playing_state_changed": "Player playing state changed to: %s"
         }
     },
-
-    "extensions": {
-        "server": {
-            "groups": {
-                "group_not_found": "Group not found.",
-                "char_id_required": "Character ID is required."
-            }
+    "server": {
+        "callbacks": {
+            "callback_not_found": "Callback not found: %s",
+            "register_failed": "Failed to register callback: %s",
+            "callback_overwrite": "Overwriting existing callback: %s"
+        },
+        "routing": {
+            "registered": "Registered bucket '%s' (ID: %d)",
+            "setting_updated": "Updated bucket '%s' setting '%s' to %s",
+            "bucket_not_exists": "Bucket '%s' does not exist",
+            "bucket_full": "Player %d cannot join '%s': Bucket is full (%d/%d)",
+            "player_moved": "Moved player %d to bucket '%s' (ID: %d)",
+            "personal_released": "Released personal bucket for source %d",
+            "label_main": "Main World",
+            "label_personal": "Personal Instance"
+        },
+        "commands": {
+            "registration_failed": "Registration failed: missing name or handler",
+            "permission_denied_title": "^1PERMISSION DENIED",
+            "permission_denied_desc": "You don't have permission to use this command."
+        },
+        "gui": {
+            "missing_action": "Server handler: missing action (source %d)",
+            "function_call_failed": "Server handler: function call failed for %s (source %d) - %s",
+            "notify_invalid_params": "Notify: Invalid params provided.",
+            "modal_params_missing": "Build modal: Player source or opts missing.",
+            "modal_source_missing": "Close modal: Player source missing.",
+            "ui_invalid_params": "Build UI: Invalid params provided.",
+            "ui_source_missing": "Close UI: Player source missing."
+        },
+        "players": {
+            "extension_failed": "Extension %s failed: %s",
+            "disconnected": "You have disconnected from the server!"
+        },
+        "users": {
+            "no_license": "No valid Rockstar license found. Please restart FiveM.",
+            "banned": "You are banned from this server.\nExpires/Type: %s\nReason: %s",
+            "checking": "Checking your identifiers...",
+            "creating": "Creating your account profile...",
+            "checking_bans": "Verifying security records...",
+            "ban_permanent": "Permanently Banned",
+            "ban_no_reason": "No reason provided"
+        },
+        "groups": {
+            "group_not_found": "Group not found.",
+            "char_id_required": "Character ID is required."
+        }
+    },
+    "shared": {
+        "gui": {
+            "label_required": "Function label is required.",
+            "function_not_found": "Function with label %s not found."
         }
     }
 }

@@ -64,8 +64,8 @@ rig = setmetatable({
         },
 
         extensions = {
-            groups = GetConvarBool("rig:extensions:groups", true),
-        },
+            
+        }
     },
 }, {
     __tostring = function(t)
