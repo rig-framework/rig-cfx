@@ -29,7 +29,8 @@ shared_scripts {
 
     "src/shared/print.lua",
     "src/shared/require.lua",
-
+    "src/shared/modules/*.lua",
+    
     "src/shared/classes/*.lua",
     "src/shared/**/class.lua",
 

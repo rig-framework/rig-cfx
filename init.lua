@@ -61,10 +61,6 @@ rig = setmetatable({
             hud_components = GetConvar("rig:gameplay:hud_components", "1,2,3,4,5,6,7,8,9,13,19,20,21,22"),
             disable_controls = GetConvarBool("rig:gameplay:disable_controls", true),
             disable_controls_list = GetConvar("rig:gameplay:disable_controls_list", "37,157,158,160,161,256,257"),
-        },
-
-        extensions = {
-            
         }
     },
 }, {
