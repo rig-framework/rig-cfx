@@ -42,10 +42,10 @@ export class Cards {
         const img_url = card.image ? resolve_image_path(card.image, "/pluck/ui/assets/cards/") : null;
         const img = img_url ? `<div class="body_card_image ${rarity_class}"><div class="body_card_image_wrapper"><img src="${img_url}" alt="cardimg"></div></div>` : "";
 
-        const buttons = Array.isArray(card.buttons) && card.buttons.length ? new Buttons({
+        const buttons = Array.isArray(card.buttons) && card.buttons.length ? `<div class="body_card_actions">${new Buttons({
             buttons: card.buttons.map((b, i) => ({ ...b, id: b.id || `card_btn_${i}`, dataset: { card_id: card.id || `card_${index}`, ...(b.dataset || {}) } })),
             classes: "cards"
-        }).get_html() : "";
+        }).get_html()}</div>` : "";
 
         return `<div class="body_card ${this.flex} ${rarity_class}" data-card-index="${index}" data-category="${category}" ${dataset_attrs} ${tooltip_data}>${img}<div class="body_card_info">${title}${desc}</div>${buttons}</div>`.trim();
     }

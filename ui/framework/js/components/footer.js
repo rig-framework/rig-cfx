@@ -62,9 +62,7 @@ export class Footer {
             <div class="footer">
                 ${["left", "center", "right"].map(s => {
                     const items = Array.isArray(this.elements[s]) ? this.elements[s] : Object.values(this.elements[s] || {});
-                    return `<div class="footer_section ${s}" style="${this.get_section_style(s)}">
-                        ${items.map(e => this.build_element(e)).join("")}
-                    </div>`;
+                    return `<div class="footer_section ${s}" style="${this.get_section_style(s)}">${items.map(e => this.build_element(e)).join("")}</div>`;
                 }).join("")}
             </div>`.trim();
     }
