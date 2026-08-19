@@ -35,7 +35,6 @@ AddEventHandler("playerJoining", function()
     if ids.license then
         if UserRegistry:activate(_src, ids.license) then
             PlayerRegistry:assign_personal_bucket(_src)
-            PlayerRegistry:create(_src)
         end
     end
 end)

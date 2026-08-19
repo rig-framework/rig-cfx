@@ -37,6 +37,21 @@ local function register_extension(name, fn, priority)
 end
 exports("register_extension", register_extension)
 
+local function assign_personal_bucket(source, custom_config)
+    return PlayerRegistry:assign_personal_bucket(source, custom_config)
+end
+exports("assign_personal_bucket", assign_personal_bucket)
+
+local function set_bucket(source, bucket_key)
+    return PlayerRegistry:set_bucket(source, bucket_key)
+end
+exports("set_player_bucket", set_bucket)
+
+local function get_bucket(source)
+    return PlayerRegistry:get_bucket(source)
+end
+exports("get_player_bucket", get_bucket)
+
 --- @section Instance Level
 
 local function save_player(source)

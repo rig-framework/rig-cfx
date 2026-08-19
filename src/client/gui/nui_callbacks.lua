@@ -18,12 +18,12 @@ local gui_registry = require("src.shared.gui.registry")
 --- @section NUI Callbacks
 
 RegisterNUICallback("gui:remove_focus", function()
-    print("info", locale(core.client.gui.focus_cleared))
+    print("info", locale("core.client.gui.focus_cleared"))
     SetNuiFocus(false, false)
 end)
 
 RegisterNUICallback("gui:handler", function(data, cb)
-    print("info", locale(core.client.gui.handler_invoked, json.encode(data)))
+    print("info", locale("core.client.gui.handler_invoked", json.encode(data)))
 
     if not data or not data.action then
         if cb then cb(false) end
@@ -33,7 +33,7 @@ RegisterNUICallback("gui:handler", function(data, cb)
     if gui_registry.has_function(data.action) then
         local success, result = pcall(gui_registry.call_registered_function, data.action, data)
         if not success then
-            print("error", locale(core.client.gui.handler_failed, result))
+            print("error", locale("core.client.gui.handler_failed", result))
         end
     else
         TriggerServerEvent("rig:server:gui_handler", data)

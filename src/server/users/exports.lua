@@ -15,7 +15,7 @@ License: https://github.com/rig-framework/rig-cfx/blob/main/LICENSE
 
 local UserRegistry = require("src.server.users.registry")
 
---- @section Users
+--- @section Functions
 
 local function get_user(source)
     return UserRegistry:get(source)
