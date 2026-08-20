@@ -37,43 +37,27 @@ $(document).off("click", ".btn").on("click", ".btn", function () {
     const $btn = $(this);
     const $modal = $btn.closest(".modal");
     const is_modal = $modal.length > 0;
-
     const action = $btn.data("action");
+    const should_close = $btn.attr("data-should_close") === "true";
 
-    if (!action) {
-        console.warn("[Buttons] No action defined on clicked button.");
-        return;
-    }
-
-    if (action === "close_modal" && is_modal) {
-        $modal.remove();
-        $("#ui_focus").removeClass("active").empty();
-        return;
-    }
-
-    if (action === "close_builder" && window.ui_instance) {
-        if (window.audio_player) {
-            window.audio_player.destroy();
-            window.audio_player = null;
-        }
-        window.ui_instance.destroy();
-        window.ui_instance = null;
-        return;
-    }
-
-    const dataset = {};
-    let should_close = false;
-
-    for (const attr of $btn[0].attributes) {
-        if (attr.name.startsWith("data-") && !["data-modal", "data-action", "data-action_type", "data-button"].includes(attr.name)) {
-            const key = attr.name.replace("data-", "").replace(/-+/g, "_");
-            if (key === "should_close") {
-                should_close = attr.value === "true";
-            } else {
-                dataset[key] = attr.value;
+    const handle_close = () => {
+        if (is_modal) {
+            $modal.remove();
+            if ($(".modal").length === 0) {
+                $("#ui_focus").removeClass("active").empty();
             }
+        } else {
+            if (window.audio_player) {
+                window.audio_player.destroy();
+                window.audio_player = null;
+            }
+            if (window.ui_instance) {
+                window.ui_instance.destroy();
+                window.ui_instance = null;
+            }
+            $("#ui_focus").removeClass("active").empty();
         }
-    }
+    };
 
     const modal_raw = $btn.attr("data-modal");
     if (modal_raw && !is_modal) {
@@ -84,6 +68,34 @@ $(document).off("click", ".btn").on("click", ".btn", function () {
         } catch (e) {
             console.error("[Buttons] Failed to parse modal JSON:", e);
             return;
+        }
+    }
+
+    if (action === "close_modal" && is_modal) {
+        handle_close();
+        return;
+    }
+
+    if (action === "close_builder" && window.ui_instance) {
+        handle_close();
+        return;
+    }
+
+    if (!action) {
+        if (should_close) {
+            handle_close();
+            return;
+        }
+        console.warn("[Buttons] No action defined on clicked button.");
+        return;
+    }
+
+    const dataset = {};
+
+    for (const attr of $btn[0].attributes) {
+        if (attr.name.startsWith("data-") && !["data-modal", "data-action", "data-action_type", "data-button", "data-should_close"].includes(attr.name)) {
+            const key = attr.name.replace("data-", "").replace(/-+/g, "_");
+            dataset[key] = attr.value;
         }
     }
 
@@ -114,22 +126,13 @@ $(document).off("click", ".btn").on("click", ".btn", function () {
             if (id) dataset[id] = val;
             if (source) dataset.source = source;
         });
-
-        if (should_close) {
-            $("#ui_focus").removeClass("active").empty();
-        }
     }
 
-    send_nui_callback(action, dataset, { should_close }).then(() => {
-        if (should_close && window.ui_instance) {
-            if (window.audio_player) {
-                window.audio_player.destroy();
-                window.audio_player = null;
-            }
-            window.ui_instance.destroy();
-            window.ui_instance = null;
-        }
-    }).catch((err) => {
+    if (should_close) {
+        handle_close();
+    }
+
+    send_nui_callback(action, dataset, { should_close }).catch((err) => {
         console.error("[Buttons] Callback failed:", err);
     });
 });

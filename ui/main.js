@@ -70,6 +70,14 @@ HANDLERS.build_ui = (data) => {
     window.ui_instance = builder;
 };
 
+HANDLERS.close_ui = () => {
+    if (window.ui_instance && typeof window.ui_instance.destroy === "function") {
+        window.ui_instance.close();
+        window.ui_instance.destroy();
+        window.ui_instance = null;
+    }
+};
+
 /**
  * Global message listener for all NUI messages.
  * Routes each message to its corresponding handler.
